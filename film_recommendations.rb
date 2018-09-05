@@ -8,10 +8,10 @@ watch = "You should watch "
 def question(genre)
     q = "Do you enjoy #{genre}? y/n"
     puts q
-    like = gets.chomp
+    like = gets.chomp.downcase
     while like != "y" && like != "n"
         puts "Not a valid response, please answer y or n!\n#{q}"
-        like = gets.chomp
+        like = gets.chomp.downcase
     end
     return like
 end
