@@ -6,27 +6,27 @@ book = "The Alchemist"
 watch = "You should watch "
 
 def question(genre)
-    q = "Do you enjoy #{genre}? y/n"
-    puts q
-    like = gets.chomp
-    while like != "y" && like != "n"
-        puts "Not a valid response, please answer y or n!\n#{q}"
-        like = gets.chomp
+    q = "Rate your love of #{genre} from 1 to 5: "
+    print q
+    rating = gets.chomp.to_i
+    while rating < 1 || rating > 5
+        puts "Not a valid response!\n#{q}"
+        rating = gets.chomp.to_i
     end
-    return like
+    return rating
 end
 
-like_doc = question("Documentaries")
-like_dram = question("Dramas")
-like_com = question("Comedies")
+doc_rating = question("Documentaries")
+dram_rating = question("Dramas")
+com_rating = question("Comedies")
 
-if like_doc == "y"
+if doc_rating > 3 || (doc_rating > dram_rating && doc_rating > com_rating)
     puts "#{watch}#{doc}"
-elsif like_dram == "y" && like_com == "n"
-    puts "#{watch}#{drama}"
-elsif like_dram == "y" && like_com == "y"
+elsif com_rating > 3 && dram_rating > 3
     puts "#{watch}#{dramedy}"
-elsif like_dram == "n" && like_com == "y"
+elsif com_rating < 4 && dram_rating > 3 || (dram_rating > doc_rating && dram_rating > com_rating)
+    puts "#{watch}#{drama}"
+elsif com_rating > 3 && dram_rating < 4 || (com_rating > doc_rating && com_rating > dram_rating)
     puts "#{watch}#{comedy}"
 else
     puts "You should read #{book}"
