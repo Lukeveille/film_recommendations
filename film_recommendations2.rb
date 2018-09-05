@@ -22,7 +22,7 @@ com_rating = question("Comedies")
 
 if doc_rating > 3 || (doc_rating > dram_rating && doc_rating > com_rating)
     puts "#{watch}#{doc}"
-elsif com_rating > 3 && dram_rating > 3
+elsif com_rating > 3 && dram_rating > 3 (doc_rating < dram_rating && doc_rating < com_rating)
     puts "#{watch}#{dramedy}"
 elsif com_rating < 4 && dram_rating > 3 || (dram_rating > doc_rating && dram_rating > com_rating)
     puts "#{watch}#{drama}"
